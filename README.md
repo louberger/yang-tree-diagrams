@@ -15,3 +15,5 @@ You agree to comply with all applicable IETF policies and procedures,
 including, BCP 78, 79, the TLP, and the TLP rules regarding code
 components (e.g. being subject to a Simplified BSD License) in
 Contributions.
+
+A formatted preview of this document can be obtained via: https://xml2rfc.tools.ietf.org/cgi-bin/xml2rfc.cgi?url=https://raw.githubusercontent.com/louberger/yang-tree-diagrams/master/draft-bjorklund-netmod-yang-tree-diagrams.xml&modeAsFormat=html%2Fascii
