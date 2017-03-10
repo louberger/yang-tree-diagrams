@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
+  ]>
+<?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
+<?rfc toc="yes" ?>
+<?rfc symrefs="yes" ?>
+<?rfc sortrefs="yes"?>
+<?rfc iprnotified="no" ?>
+<?rfc strict="yes" ?>
+<rfc category="info" ipr="trust200902"
+     docName="draft-bjorklund-netmod-yang-tree-diagrams-00">
+  <front>
+    <title abbrev="YANG Tree Diagrams">YANG Tree Diagrams</title>
+    <author initials="M" surname="Bjorklund" fullname='Martin Bjorklund' >
+      <organization>Tail-f Systems</organization>
+      <address>
+        <email>mbj@tail-f.com</email>
+      </address>
+    </author>
+    
+    <author initials='L.' surname="Berger" fullname='Lou Berger' role='editor'>
+      <organization>LabN Consulting, L.L.C.</organization>
+      <address>
+        <email>lberger@labn.net</email>
+      </address>
+    </author>
+    <date/>
+    <abstract>
+      <t>
+        This document captures the current syntax used in YANG module
+        Tree Diagrams.  The purpose of the document is to provide a
+        single location for this definition.  This syntax may be updated
+        from time to time based on the evolution of the YANG language.
+      </t>
+    </abstract>
+  </front>
+  <middle>
+    <section anchor="sec-intro" title="Introduction">
+      <t>
+        YANG Tree Diagrams were first published in <xref
+        target="RFC7223"/>.  Such diagrams are commonly used to provided
+        a simplified graphical representation of a data model and can be
+        automatically generated via tools such as "pyang". (See <eref
+        target="https://github.com/mbj4668/pyang"/>).  This document
+        provides the syntax used in YANG Tree Diagrams.  It is
+        expected that this document will be updated or replaced as
+        changes to the YANG language, see <xref target="RFC7950"/>,
+        necessitate.
+      </t>
+      <t>
+        Today's Common practice is include the definition of the syntax
+        used to represent a YANG module in every document that provides
+        a tree diagram.  This practice has several disadvantages and the
+        purpose of the document is to provide a single location for this
+        definition.  It is not the intent of this document to restrict
+        future changes, but rather to ensure such changes are easily
+        identified and suitably agreed upon.
+      </t>
+      <t>
+        An example tree diagram can be found in  <xref
+        target="RFC7223"/> Section 3.  A portion of which follows:
+        <figure>
+          <artwork>
+      +--rw interfaces
+      |  +--rw interface* [name]
+      |     +--rw name                        string
+      |     +--rw description?                string
+      |     +--rw type                        identityref
+      |     +--rw enabled?                    boolean
+      |     +--rw link-up-down-trap-enable?   enumeration
+          </artwork>
+        </figure>
+      </t>
+      <t>
+        The remainder of this document contains YANG Tree Diagram syntax
+        based on output from pyang version 1.7.1.
+      </t>
+    </section>
+    <section anchor="sec-syntax" title="Tree Diagram Syntax">
+      <t>
+        This section provides the meaning of the symbols used in YANG
+        Tree diagrams. 
+      </t>
+      <t> 
+        Each node in a YANG module is printed as:
+        <figure>
+          <artwork><![CDATA[
+<status> <flags> <name> <opts> <type> <if-features>
+
+  <status> is one of:
+    +  for current
+    x  for deprecated
+    o  for obsolete
+
+  <flags> is one of:
+    rw  for configuration data
+    ro  for non-configuration data
+    -x  for rpcs and actions
+    -n  for notifications
+
+  <name> is the name of the node
+    (<name>) means that the node is a choice node
+   :(<name>) means that the node is a case node
+
+   If the node is augmented into the tree from another module, its
+   name is printed as <prefix>:<name>.
+
+  <opts> is one of:
+    ?  for an optional leaf, choice, anydata or anyxml
+    !  for a presence container
+    *  for a leaf-list or list
+    [<keys>] for a list's keys
+
+  <type> is the name of the type for leafs and leaf-lists
+
+    If the type is a leafref, the type is printed as "-> TARGET",
+    where TARGET is either the leafref path, with prefixed removed
+    if possible.
+
+  <if-features> is the list of features this node depends on,
+  printed within curly brackets and a question mark "{...}?"
+
+]]>
+          </artwork>
+        </figure>
+      </t>
+    </section>
+    <section anchor="sec-pyang" title="pyang Tree Options">
+      <t>
+        This previous section was generated using pyang.  Pyang
+        also has other tree related options that may be useful to
+        YANG module authors and users.  They include:
+        <figure>
+          <artwork>
+  Tree output specific options:
+    --tree-help         Print help on tree symbols and exit
+    --tree-depth=TREE_DEPTH
+                        Number of levels to print
+    --tree-line-length=TREE_LINE_LENGTH
+                        Maximum line length
+    --tree-path=TREE_PATH
+                        Subtree to print
+    --tree-print-groupings
+                        Print groupings
+          </artwork>
+        </figure>
+      </t>
+    </section>
+
+    <section anchor="sec-iana" title="IANA Considerations">
+      <t>There are no IANA requests or assignments included in this document.</t>
+    </section>
+  </middle>
+  <?rfc needLines="20"?>
+  <back>
+    <references title="Informative References">
+      <?rfc include="reference.RFC.7223"?>
+      <?rfc include="reference.RFC.7950"?>
+    </references>
+  </back>
+</rfc>
+
+<!-- Local Variables: -->
+<!-- fill-column:72 -->
+<!-- End: -->
