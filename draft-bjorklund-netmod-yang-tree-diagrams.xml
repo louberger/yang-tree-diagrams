@@ -125,6 +125,16 @@
         </figure>
       </t>
     </section>
+    <section anchor="sec-next" title="Next Steps">
+      <t>
+        Authors' note: This draft is currently a bit rough.  The
+        next/future version is expected to add text covering different
+        types of trees and when to use them; for example, complete
+        module trees, subtrees, trees for groupings etc.  Maybe also how
+        to deal with the limited line lengths in RFCs.
+      </t>
+    </section>
+<!-- 
     <section anchor="sec-pyang" title="pyang Tree Options">
       <t>
         This previous section was generated using pyang.  Pyang
@@ -132,20 +142,15 @@
         YANG module authors and users.  They include:
         <figure>
           <artwork>
-  Tree output specific options:
-    --tree-help         Print help on tree symbols and exit
-    --tree-depth=TREE_DEPTH
-                        Number of levels to print
-    --tree-line-length=TREE_LINE_LENGTH
-                        Maximum line length
-    --tree-path=TREE_PATH
-                        Subtree to print
-    --tree-print-groupings
-                        Print groupings
+          Tree output specific options:
+          TBD
+
+
           </artwork>
         </figure>
       </t>
     </section>
+     -->
 
     <section anchor="sec-iana" title="IANA Considerations">
       <t>There are no IANA requests or assignments included in this document.</t>
